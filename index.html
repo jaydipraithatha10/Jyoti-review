@@ -1,82 +1,223 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jyoti Review</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jyoti Gruh Udhyog - Customer Review</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#0d2f1d,#1f5b39,#d4af37,#fff8e6);
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
+    background:linear-gradient(135deg,#062d22,#0d4a35,#1d2b20);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
 }
 
 .card{
-width:90%;
-max-width:420px;
-background:#102419;
-border:2px solid #d4af37;
-border-radius:25px;
-padding:30px;
-text-align:center;
-color:white;
-box-shadow:0 20px 40px rgba(0,0,0,.4);
+    width:100%;
+    max-width:420px;
+    background:#103226;
+    border:2px solid #d4af37;
+    border-radius:24px;
+    padding:30px 22px;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 0 25px rgba(212,175,55,.25);
 }
 
-.logo{
-font-size:65px;
+.diya{
+    font-size:65px;
+    animation:glow 1.8s infinite alternate;
+    margin-bottom:10px;
 }
 
-.brand{
-font-size:30px;
-font-weight:bold;
-color:#f4d06f;
-margin-top:10px;
+@keyframes glow{
+    from{
+        filter:drop-shadow(0 0 5px gold);
+    }
+    to{
+        filter:drop-shadow(0 0 25px gold);
+    }
 }
 
-.question{
-font-size:26px;
-margin:30px 0;
+h1{
+    color:#f6d66c;
+    font-size:30px;
+    margin-bottom:8px;
 }
 
-.button{
-display:block;
-padding:18px;
-background:#25D366;
-color:white;
-text-decoration:none;
-border-radius:18px;
-font-size:22px;
-font-weight:bold;
+.subtitle{
+    color:#f5f5f5;
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.5;
+    margin:20px 0 30px;
+}
+
+.mainBtn{
+    width:100%;
+    background:linear-gradient(135deg,#d4af37,#f7e28a);
+    color:#123d2d;
+    border:none;
+    border-radius:14px;
+    padding:16px;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.mainBtn:hover{
+    transform:scale(1.03);
+}
+
+.options{
+    display:none;
+    margin-top:25px;
+}
+
+.rateBtn{
+    width:100%;
+    border:none;
+    cursor:pointer;
+    padding:16px;
+    margin:10px 0;
+    border-radius:14px;
+    font-size:19px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.rateBtn:hover{
+    transform:translateY(-2px);
+}
+
+.excellent{
+    background:#27ae60;
+    color:#fff;
+}
+
+.good{
+    background:#d4af37;
+    color:#103226;
+}
+
+.improve{
+    background:#c0392b;
+    color:#fff;
+}
+
+.thanks{
+    display:none;
+    margin-top:25px;
+    color:#f6d66c;
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.6;
+}
+
+.footer{
+    margin-top:28px;
+    color:#cfcfcf;
+    font-size:14px;
+}
+
+@media(max-width:480px){
+    h1{
+        font-size:26px;
+    }
+
+    .subtitle{
+        font-size:20px;
+    }
+
+    .mainBtn,
+    .rateBtn{
+        font-size:18px;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
 <div class="card">
 
-<div class="logo">🪔</div>
+<div class="diya">🪔</div>
 
-<div class="brand">
-Jyoti Gruh Udhyog
+<h1>Jyoti Gruh Udhyog</h1>
+
+<div class="subtitle">
+તમને અમારી પ્રોડક્ટ કેવી લાગી?
 </div>
 
-<div class="question">
-🌟 તમને અમારી પ્રોડક્ટ કેવી લાગી?
-</div>
-
-<a href="#" class="button">
+<button class="mainBtn" id="showBtn">
 ⭐ Rating આપો
-</a>
+</button>
+
+<div class="options" id="options">
+
+<button class="rateBtn excellent" onclick="sendRating('😍 Excellent')">
+😍 Excellent
+</button>
+
+<button class="rateBtn good" onclick="sendRating('😊 Good')">
+😊 Good
+</button>
+
+<button class="rateBtn improve" onclick="sendRating('😕 Needs Improvement')">
+😕 Needs Improvement
+</button>
 
 </div>
+
+<div class="thanks" id="thanks">
+🙏 ખૂબ ખૂબ આભાર!<br>
+તમારો પ્રતિભાવ અમારા માટે ખૂબ જ કિંમતી છે.
+</div>
+
+<div class="footer">
+© Jyoti Gruh Udhyog
+</div>
+
+</div>
+
+<script>
+const showBtn=document.getElementById("showBtn");
+const options=document.getElementById("options");
+const thanks=document.getElementById("thanks");
+
+showBtn.addEventListener("click",function(){
+    options.style.display="block";
+    showBtn.style.display="none";
+});
+
+function sendRating(rating){
+
+    thanks.style.display="block";
+    options.style.display="none";
+
+    const message=
+`🌼 Jyoti Gruh Udhyog Review
+
+Rating: ${rating}
+
+આભાર 🙏`;
+
+    setTimeout(function(){
+        window.location.href="https://wa.me/919712149344?text="+encodeURIComponent(message);
+    },700);
+}
+</script>
 
 </body>
 </html>
