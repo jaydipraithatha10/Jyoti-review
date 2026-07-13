@@ -93,7 +93,29 @@ h1{
 }
 
 .mainBtn{
-    width:100%;
+width:100%;
+padding:16px;
+border:none;
+border-radius:16px;
+cursor:pointer;
+font-size:20px;
+font-weight:700;
+color:#083122;
+background:linear-gradient(135deg,#FFD700,#F8E58C,#FFD700);
+background-size:200% 200%;
+box-shadow:0 0 20px rgba(255,215,0,.45);
+transition:.35s;
+animation:goldBtn 3s linear infinite;
+}
+
+.mainBtn:hover{
+transform:translateY(-3px) scale(1.03);
+box-shadow:0 0 35px rgba(255,215,0,.7);
+}
+
+@keyframes goldBtn{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
 }
     
 body{
