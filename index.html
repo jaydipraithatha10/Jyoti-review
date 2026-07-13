@@ -273,6 +273,41 @@ body{
         font-size:18px;
     }
 }
+.stars{
+display:flex;
+justify-content:center;
+gap:12px;
+font-size:42px;
+margin-top:25px;
+cursor:pointer;
+}
+
+.stars span{
+transition:.3s;
+filter:drop-shadow(0 0 8px gold);
+animation:starGlow 2s infinite alternate;
+}
+
+.stars span:hover{
+transform:scale(1.3) rotate(-10deg);
+}
+
+.tapText{
+margin-top:12px;
+color:#FFD700;
+font-size:15px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+@keyframes starGlow{
+from{
+filter:drop-shadow(0 0 5px gold);
+}
+to{
+filter:drop-shadow(0 0 18px gold);
+}
+}
 </style>
 </head>
 
@@ -287,10 +322,18 @@ body{
 <div class="subtitle" id="subtitle">
 તમને અમારી પ્રોડક્ટ કેવી લાગી?
 </div>
+<div class="stars" id="showBtn">
+<span>⭐</span>
+<span>⭐</span>
+<span>⭐</span>
+<span>⭐</span>
+<span>⭐</span>
+</div>
 
-<button class="mainBtn" id="showBtn">
-⭐ Rating આપો
-</button>
+<div class="tapText">
+Tap Stars to Give Rating
+</div>
+
 
 <div class="options" id="options">
 
@@ -318,7 +361,6 @@ body{
 </div>
 
 </div>
-
 <script>
 const showBtn=document.getElementById("showBtn");
 const options=document.getElementById("options");
