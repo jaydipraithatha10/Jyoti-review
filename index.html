@@ -262,11 +262,22 @@ cursor:pointer;
 }
 
 .stars span{
-transition:.3s;
-filter:drop-shadow(0 0 8px gold);
-animation:starGlow 2s infinite alternate;
-cursor:pointer;
+    cursor:pointer;
+    transition:.3s;
+    filter:drop-shadow(0 0 8px gold);
 }
+
+.stars span:hover{
+    transform:scale(1.25) rotate(-10deg);
+    filter:drop-shadow(0 0 20px gold);
+}
+
+.stars span.active{
+    color:#FFD700;
+    transform:scale(1.15);
+    filter:drop-shadow(0 0 20px gold);
+}
+
 
 .stars span:hover{
 transform:scale(1.3) rotate(-10deg);
@@ -392,7 +403,28 @@ ${time}
     setTimeout(function(){
         window.location.href="https://wa.me/919712149344?text="+encodeURIComponent(message);
     },1000);
-}
+}const stars = document.querySelectorAll(".stars span");
+
+stars.forEach((star,index)=>{
+    star.addEventListener("click",()=>{
+
+        stars.forEach((s,i)=>{
+            if(i<=index){
+                s.classList.add("active");
+            }else{
+                s.classList.remove("active");
+            }
+        });
+
+        setTimeout(()=>{
+            options.style.display="block";
+            document.querySelector(".stars").style.display="none";
+            document.querySelector(".tapText").style.display="none";
+        },300);
+
+    });
+});
+
 </script>
 
 </body>
