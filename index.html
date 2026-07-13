@@ -207,9 +207,34 @@ function sendRating(rating){
     options.style.display="none";
 document.getElementById("subtitle").style.display="none";
 
-    const message=
-`🌼 Jyoti Gruh Udhyog Review
+    
+const now = new Date();
 
+const date = now.toLocaleDateString('en-GB');
+
+const time = now.toLocaleTimeString('en-IN', {
+    hour: '2-digit',
+    minute: '2-digit'
+});
+
+const message =
+`╭━━━━━━━━━━━━━━━━━━━━━━╮
+🌼 *JYOTI GRUH UDHYOG* 🌼
+⭐ *CUSTOMER REVIEW* ⭐
+╰━━━━━━━━━━━━━━━━━━━━━━╯
+
+⭐ *Rating*
+➜ ${rating}
+
+📅 *Date*
+➜ ${date}
+
+🕒 *Time*
+➜ ${time}
+
+━━━━━━━━━━━━━━━━━━━━━━
+🙏 *Thank You*
+━━━━━━━━━━━━━━━━━━━━━━`;
 Rating: ${rating}
 
 આભાર 🙏`;
