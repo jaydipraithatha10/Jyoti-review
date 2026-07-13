@@ -265,6 +265,7 @@ cursor:pointer;
 transition:.3s;
 filter:drop-shadow(0 0 8px gold);
 animation:starGlow 2s infinite alternate;
+cursor:pointer;
 }
 
 .stars span:hover{
@@ -345,11 +346,14 @@ const showBtn=document.getElementById("showBtn");
 const options=document.getElementById("options");
 const thanks=document.getElementById("thanks");
 
-showBtn.addEventListener("click",function(){
-    options.style.display="block";
-    showBtn.style.display="none";
-});
 
+document.querySelectorAll(".stars span").forEach(function(star){
+    star.addEventListener("click", function(){
+        options.style.display = "block";
+        document.querySelector(".stars").style.display = "none";
+        document.querySelector(".tapText").style.display = "none";
+    });
+});
 function sendRating(rating){
 
     thanks.style.display="block";
