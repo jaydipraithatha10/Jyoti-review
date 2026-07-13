@@ -279,9 +279,6 @@ cursor:pointer;
 }
 
 
-.stars span:hover{
-transform:scale(1.3) rotate(-10deg);
-}
 
 .tapText{
 margin-top:12px;
@@ -353,18 +350,12 @@ Tap Stars to Give Rating
 
 </div>
 <script>
-const showBtn=document.getElementById("showBtn");
+
 const options=document.getElementById("options");
 const thanks=document.getElementById("thanks");
 
 
-document.querySelectorAll(".stars span").forEach(function(star){
-    star.addEventListener("click", function(){
-        options.style.display = "block";
-        document.querySelector(".stars").style.display = "none";
-        document.querySelector(".tapText").style.display = "none";
-    });
-});
+
 function sendRating(rating){
 
     thanks.style.display="block";
@@ -403,19 +394,26 @@ ${time}
     setTimeout(function(){
         window.location.href="https://wa.me/919712149344?text="+encodeURIComponent(message);
     },1000);
-}const stars = document.querySelectorAll(".stars span");
+}
+const stars = document.querySelectorAll(".stars span");
 
+stars.forEach((star,index)=>{
+    star.addEventListener("click",()=>{
 
+        stars.forEach((s,i)=>{
+            s.classList.toggle("active", i <= index);
         });
 
         setTimeout(()=>{
-            options.style.display="block";
             document.querySelector(".stars").style.display="none";
             document.querySelector(".tapText").style.display="none";
+            options.style.display="block";
         },300);
 
     });
 });
+
+    
 
 </script>
 
