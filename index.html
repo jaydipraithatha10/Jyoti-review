@@ -318,7 +318,7 @@ filter:drop-shadow(0 0 18px gold);
 </div>
 
 <div class="tapText">
-Tap Stars to Give Rating
+⭐ રેટિંગ આપવા માટે સ્ટાર પર ટચ કરો
 </div>
 
 
@@ -359,13 +359,10 @@ Tap Stars to Give Rating
 const options=document.getElementById("options");
 const thanks=document.getElementById("thanks");
 
-
-
 function sendRating(rating){
-
     thanks.style.display="block";
     options.style.display="none";
-document.getElementById("subtitle").style.display="none";
+    document.getElementById("subtitle").style.display="none";
 
     const message = `
 🪔 *Jyoti Gruh Udhyog*
@@ -377,30 +374,23 @@ ${rating}
 🙏 Thank You
 `;
 
-setTimeout(function(){
-    window.location.href =
-    "https://wa.me/919712149344?text=" + encodeURIComponent(message);
-},3000);
+    setTimeout(function(){
+        window.location.href="https://wa.me/919712149344?text="+encodeURIComponent(message);
+    },3000);
+}
 
-const stars = document.querySelectorAll(".stars span");
+const stars=document.querySelectorAll(".stars span");
 
 stars.forEach((star,index)=>{
     star.addEventListener("click",()=>{
-
-        stars.forEach((s,i)=>{
-            s.classList.toggle("active", i <= index);
-        });
-
+        stars.forEach((s,i)=>s.classList.toggle("active",i<=index));
         setTimeout(()=>{
             document.querySelector(".stars").style.display="none";
             document.querySelector(".tapText").style.display="none";
             options.style.display="block";
         },300);
-
     });
 });
-
-    
 
 </script>
 
