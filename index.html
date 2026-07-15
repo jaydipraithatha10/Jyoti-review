@@ -367,39 +367,21 @@ function sendRating(rating){
     options.style.display="none";
 document.getElementById("subtitle").style.display="none";
 
-    
-const now = new Date();
+    const message = `
+🪔 *Jyoti Gruh Udhyog*
 
-const date = now.toLocaleDateString('en-GB');
+🌟 *New Customer Review*
 
-const time = now.toLocaleTimeString('en-IN', {
-    hour: '2-digit',
-    minute: '2-digit'
-});
-
-
-const message = `
-🌼 *JYOTI GRUH UDHYOG*
-
-⭐ *CUSTOMER REVIEW*
-
-⭐ *Rating*
 ${rating}
 
-📅 *Date*
-${date}
+🙏 Thank You
+`;
 
-🕒 *Time*
-${time}
+setTimeout(function(){
+    window.location.href =
+    "https://wa.me/919712149344?text=" + encodeURIComponent(message);
+},3000);
 
-🙏 *Thank You*`;
-
-
-
-    setTimeout(function(){
-        window.location.href="https://wa.me/919712149344?text="+encodeURIComponent(message);
-    },1000);
-}
 const stars = document.querySelectorAll(".stars span");
 
 stars.forEach((star,index)=>{
